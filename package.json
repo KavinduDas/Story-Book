@@ -1,0 +1,17 @@
+{
+  "name": "node_storybook",
+  "version": "1.0.0",
+  "description": "App for posting stories",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "mongoose": "^9.7.0"
+  }
+}
