@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storybooks</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css">
+    <style>
+    nav .brand-logo {
+        left: 50%;
+        transform: translateX(-50%);
+        position: absolute;
+    }
+    nav ul.right li a {
+        color: white;
+    }
+    .sidenav-trigger {
+        display: block !important;
+        color: white;
+        padding: 0 15px;
+    }
+</style>
+</head>
+<body>
+    {{> _header}}
+    <main>
+        <div class="container">
+            {{{body}}}
+        </div>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    {{!-- <script>
+        $(document).ready(() =>{
+            $('.button-collapse').sideNav()
+        })
+    </script> --}}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        M.Sidenav.init(document.querySelectorAll('.sidenav'));
+    });
+</script>
+</body>
+</html>

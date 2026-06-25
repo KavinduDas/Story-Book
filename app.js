@@ -3,15 +3,55 @@ const express = require('express')
 const mongoose = require('mongoose')
 const passport = require('passport')
 const passportConfig = require('./config/passport')
+const session = require('express-session')  
+const cookieParser = require('cookie-parser')
+const { engine } = require('express-handlebars')
 
+
+const app = express()
+
+app.use(cookieParser())
+app.use(session({
+    secret:  'secret',
+    resave: false,
+    saveUninitialized: false
+}))
+
+app.use(passport.initialize())
+app.use(passport.session())
+
+// Set Global variables 
+app.use((req,res,next)=>{
+    res.locals.user = req.user ? req.user.toObject() : null
+    next()
+})
+// load routes 
+const index = require('./routes/index')
+const auth = require('./routes/auth')
+
+// Load User model
+// require('./models/user')
 passportConfig(passport)
 
-const app = express();
+//Load Keys 
+const keys =  require('./config/keys')
 
 
+// Map Global Promises 
+mongoose.Promise = global.Promise
 
-//Load Routes
-const auth = require('./routes/auth')
+// Mongoose Connect 
+mongoose.connect(process.env.MONGO_URI)
+    .then(() => console.log('MongoDB connected'))
+    .catch(err => console.log(err))
+
+// Handlebars Middleware 
+
+app.engine('handlebars', engine({
+    defaultLayout: 'main'
+}))
+
+app.set('view engine' , 'handlebars')
 
 const port = process.env.PORT || 5000
 
@@ -20,7 +60,4 @@ app.listen(port , ()=>{
 })
 
 app.use('/auth',auth)
-
-app.get("/",(req,res) =>{
-    res.send('It Works')
-})
+app.use('/',index)

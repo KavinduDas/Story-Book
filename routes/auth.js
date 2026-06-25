@@ -14,4 +14,21 @@ router.get('/google/callback',
     res.redirect('/dashboard');
   });
 
+  router.get('/verify', (req, res)=>{
+    if(req.user){
+        console.log(req.user)
+    }else{
+        console.log('Not User')
+    }
+  })
+
+
+  router.get('/logout', (req, res, next) => {
+    req.logout((err) => {
+        if(err) { return next(err) }
+        res.redirect('/')
+    })
+})
+
+
 module.exports = router

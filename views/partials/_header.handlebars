@@ -1,0 +1,42 @@
+<nav class="grey darken-3">
+    <div class="container">
+        <div class="nav-wrapper">
+            <a href="/stories" class="brand-logo">Storybooks</a>
+            <a href="#" data-target="main-menu" class="sidenav-trigger">
+                <i class="fas fa-bars"></i>
+            </a>
+
+            <ul class="right">
+                {{#if user}}
+                    <li><a href="/dashboard">Welcome {{user.firstname}}</a></li>
+                    <li><a href="/auth/logout"><i class="fas fa-right-from-bracket"></i> Logout</a></li>
+                {{else}}
+                    <li><a href="/stories"><i class="fas fa-book-open"></i> Public stories</a></li>
+                {{/if}}
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Sidenav -->
+<ul class="sidenav" id="main-menu">
+    {{#if user}}
+        <li><a href="/dashboard">Welcome {{user.firstname}}</a></li>
+        <li><a href="/auth/logout">Logout</a></li>
+    {{else}}
+        <li><a href="/stories">Public Stories</a></li>
+        <li>
+            <a href="/auth/google" class="btn red darken-3 white-text" style="margin:10px">
+                <i class="fab fa-google"></i> Login with Google
+            </a>
+        </li>
+    {{/if}}
+    <li><a href="/stories"><i class="fas fa-book"></i> Public Stories</a></li>
+    <li class="divider"></li>
+
+    {{#if user}}
+    <li><a href="/dashboard"><i class="fas fa-cog"></i> Dashboard</a></li>
+    <li><a href="/stories/my"><i class="fas fa-book"></i> My Stories</a></li>
+    <li><a href="/auth/logout"><i class="fas fa-right-from-bracket"></i>Logout</a></li>
+    {{/if}}
+</ul>
