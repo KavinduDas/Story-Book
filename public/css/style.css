@@ -1,0 +1,58 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: 100vh !important;
+}
+
+main {
+    flex: 1 !important;
+}
+footer{
+    margin-top: 10px;
+}
+.heading-text{
+    font-size: 2.5rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;      /* limits to 2 lines */
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+}
+.story-text {
+    height: 70px;
+}
+.txt-dashboard{
+    text-transform: capitalize;
+}
+#delete-button{
+    display: inline;
+}
+.col.s12.m9 h3 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.card-story {
+    margin: 20px 0;
+}
+
+/* Date and author name */
+.col.s12.m9 h5 {
+    font-size: 1rem;
+    color: #888;
+    margin: 0 0 5px 0;
+}
+
+/* Comment card */
+.card .card-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #333;
+}

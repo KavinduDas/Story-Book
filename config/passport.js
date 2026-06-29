@@ -5,7 +5,7 @@ const keys = require('./keys')
 
 
 // Load user model
-const User = require('../models/User') 
+const User = require('../models/user') 
 
 module.exports = function(passport){
     passport.use(
@@ -18,7 +18,7 @@ module.exports = function(passport){
             // console.log(accessToken)
             console.log(profile.name)
             const image = profile.photos[0].value
-            console.log(image)
+            // console.log(image)
 
             const newUser = {
                 googleID : profile.id,

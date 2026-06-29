@@ -6,6 +6,7 @@
     <title>Storybooks</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
     <style>
     nav .brand-logo {
         left: 50%;
@@ -24,13 +25,19 @@
 </head>
 <body>
     {{> _header}}
+    {{#if user}}
+        {{> _add-btn}}
+    {{/if }}
     <main>
         <div class="container">
             {{{body}}}
         </div>
+       
     </main>
+     {{> _footer}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
 
     {{!-- <script>
         $(document).ready(() =>{
@@ -40,6 +47,8 @@
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         M.Sidenav.init(document.querySelectorAll('.sidenav'));
+        M.FormSelect.init(document.querySelectorAll('select'));
+        CKEDITOR.replace(document.getElementById('body'))
     });
 </script>
 </body>
